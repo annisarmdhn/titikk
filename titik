@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+    public class Titik {
+        private int x;
+        private int y;
+
+        public Titik() {
+            x = 0;
+            y = 0;
+        }
+
+        public void inisialisasiTitik(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public void tampilTitik() {
+            System.out.println("Titik: (" + x + ", " + y + ")");
+        }
+
+        public void perkalihanSkalar(int skalar) {
+            x *= skalar;
+            y *= skalar;
+        }
+
+        public void pencerminanSumbuX() {
+            y = -y;
+        }
+
+        public void pencerminanSumbuY() {
+            x = -x;
+        }
+
+        public double jarak(Titik t2) {
+            int x2 = t2.getX();
+            int y2 = t2.getY();
+            return Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2));
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            Titik titik = new Titik();
+
+            System.out.print("Masukkan nilai x: ");
+            int x = scanner.nextInt();
+            System.out.print("Masukkan nilai y: ");
+            int y = scanner.nextInt();
+            titik.inisialisasiTitik(x, y);
+
+            titik.tampilTitik();
+
+            System.out.print("Masukkan nilai skalar: ");
+            int skalar = scanner.nextInt();
+            titik.perkalihanSkalar(skalar);
+            titik.tampilTitik();
+
+            titik.pencerminanSumbuX();
+            titik.tampilTitik();
+
+            titik.pencerminanSumbuY();
+            titik.tampilTitik();
+
+            Titik titik2 = new Titik();
+            System.out.print("Masukkan nilai x titik kedua: ");
+            x = scanner.nextInt();
+            System.out.print("Masukkan nilai y titik kedua: ");
+            y = scanner.nextInt();
+            titik2.inisialisasiTitik(x, y);
+            double jarak = titik.jarak(titik2);
+            System.out.println("Jarak antara kedua titik: " + jarak);
+
+            scanner.close();
+        }
+    }
+
